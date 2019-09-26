@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+    {% for news in allNews %}
+        <div class="card mb-4">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="{% url_for('news', 'news_image_link') %}" class="card-img rounded float-right" alt="..." width="400" height="250">
+                </div>
+                <div class="col-md-8">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-primary">{{ news.news_category }}</strong>
+                        <h3 class="mb-0">{{ news.news_title }}</h3>
+                        <p class="card-text"><small class="text-muted">{{ news.posted_date.date() }}/small></p>
+        
+                        <p class="card-text mb-auto">{{ news.news_summary }}</p>
+                        <a href="{{ news.news_source_link }}" class="stretched-link">Continue reading</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    
+
+{% endblock %}
